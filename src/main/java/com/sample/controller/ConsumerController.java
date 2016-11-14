@@ -5,7 +5,6 @@ import com.sample.server.ConsumerServer;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +22,14 @@ public class ConsumerController {
     @RequestMapping("/hello")
     @ResponseBody
     public Consumer greeting(@RequestParam(value = "name", required = false, defaultValue = "zhenghuasheng") String name) {
+        logger.info("greeting start..........");
         return consumerServer.getConsumerByName(name);
     }
+
+
+    @RequestMapping("/login")
+    public String login(){
+        return "loginPage";
+    }
+
 }

@@ -1,8 +1,7 @@
 package com.sample.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import java.io.Serializable;
+import java.util.Date;
 
 public class Consumer implements Serializable{
 
@@ -18,6 +17,19 @@ public class Consumer implements Serializable{
 	private String memberName;
 	
 	private String memberIp;
+
+//	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
+	private Date date =  new Date();
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
 	public String getMemberIp() {
 		return memberIp;
 	}
