@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * Configuration for HTTP message converters that use Jackson.
  * Created by zhenghuasheng on 2016/11/14.
  */
 
