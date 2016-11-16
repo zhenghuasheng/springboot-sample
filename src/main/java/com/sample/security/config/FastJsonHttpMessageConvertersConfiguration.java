@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Configuration for HTTP message converters that use Jackson.
+ * Configuration for HTTP message converters that use fastjson.
  * Created by zhenghuasheng on 2016/11/14.
  */
 
@@ -35,10 +35,15 @@ public class FastJsonHttpMessageConvertersConfiguration {
             FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
 
             FastJsonConfig fastJsonConfig = new FastJsonConfig();//4
+            /**fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
+             * SerializerFeature.WriteDateUseDateFormat
+             * 	@JSONField(format = "yyyy-MM-dd HH:mm:ss") 有相同的效果
+             * **/
             fastJsonConfig.setSerializerFeatures(
                     SerializerFeature.PrettyFormat,
                     SerializerFeature.WriteClassName,
                     SerializerFeature.WriteMapNullValue,
+                    SerializerFeature.NotWriteRootClassName,
                     SerializerFeature.WriteDateUseDateFormat
 
             );
