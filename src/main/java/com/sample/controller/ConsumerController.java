@@ -23,7 +23,7 @@ public class ConsumerController {
     @ResponseBody
     public Consumer greeting(@RequestParam(value = "name", required = false, defaultValue = "zhenghuasheng") String name) {
         logger.info("greeting start..........");
-        return consumerServer.getConsumerByName(name);
+        return consumerServer.getConsumer(name);
     }
 
 

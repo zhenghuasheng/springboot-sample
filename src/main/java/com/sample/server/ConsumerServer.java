@@ -23,21 +23,22 @@ public class ConsumerServer {
     private ConsumerMapper consumerMapper;
 //    @Autowired
 //    private UserServer userServer;
-//    @Autowired
-//    private RedisCache redisCache;
+    @Autowired
+    private RedisCache redisCache;
 
 
-    public Consumer getConsumerByName(String name) {
+//    @Cacheable(value = "springbootCache" ,keyGenerator = "localKeyGenerator")
+    public Consumer getConsumer(String name) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("memberName", name);
-//        PtResult ptResult = userServer.getUserBykey(1L);
-//       PtResult result = (PtResult) redisCache.get("ptResult").get();
-//        if (result != null){
-//            System.out.println("get from cache!");
-//        }else {
-//            redisCache.put("ptResult",ptResult);
-//        }
 
-        return consumerMapper.getConsumerRequest(params);
+        Consumer result = (Consumer) redisCache.get("consumer:"+ name).get();
+        if (result == null) {
+            result = consumerMapper.getConsumerRequest(params);
+            redisCache.put("consumer:"+ name,result);
+        }
+
+        logger.info("message get from db");
+        return result;
     }
 }
