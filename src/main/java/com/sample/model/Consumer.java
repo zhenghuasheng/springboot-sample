@@ -11,11 +11,11 @@ public class Consumer implements Serializable{
 	private static final long serialVersionUID = 658760036889095089L;
 
 	private int id;
-	
+
 	private String memberId;
-	
+
 	private String memberName;
-	
+
 	private String memberIp;
 
 //	@JSONField(format = "yyyy-MM-dd HH:mm:ss")

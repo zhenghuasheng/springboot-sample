@@ -6,11 +6,11 @@ import org.springframework.cache.support.SimpleValueWrapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.concurrent.Callable;
 
 /**
  * Created by Administrator on 2016/1/4.
@@ -60,6 +60,11 @@ public class RedisCache implements Cache {
 
     @Override
     public <T> T get(Object o, Class<T> aClass) {
+        return null;
+    }
+
+    @Override
+    public <T> T get(Object o, Callable<T> callable) {
         return null;
     }
 

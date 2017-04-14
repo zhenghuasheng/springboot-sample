@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -49,8 +50,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisTemplate<String, String> redisTemplate(
-            RedisConnectionFactory factory) {
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
@@ -60,5 +60,13 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.setValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
         return template;
+    }
+    @Bean
+    public JedisConnectionFactory redisConnectionFactory() {
+        JedisConnectionFactory factory = new JedisConnectionFactory();
+//        factory.setHostName(host);
+//        factory.setPort(port);
+//        factory.setTimeout(timeout); //设置连接超时时间
+        return factory;
     }
 }
