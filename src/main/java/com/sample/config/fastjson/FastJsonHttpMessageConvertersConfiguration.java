@@ -1,4 +1,4 @@
-package com.sample.security.config;
+package com.sample.config.fastjson;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
@@ -59,9 +59,7 @@ public class FastJsonHttpMessageConvertersConfiguration {
                 }
             };
             fastJsonConfig.setSerializeFilters(valueFilter);
-
             converter.setFastJsonConfig(fastJsonConfig);
-
             return converter;
         }
     }

@@ -3,7 +3,6 @@ package com.sample.dao;
 
 import com.sample.model.Consumer;
 
-import java.util.List;
 import java.util.Map;
 
 public interface ConsumerMapper {
@@ -11,6 +10,8 @@ public interface ConsumerMapper {
 //	 int addConsumerRequset(Consumer consumer);
 	
 	 Consumer getConsumerRequest(Map<String, Object> map);
+
+	int insertProducts(Map<String, Object> map);
 	
 //	 Consumer getConsumerBykey(int id);
 //

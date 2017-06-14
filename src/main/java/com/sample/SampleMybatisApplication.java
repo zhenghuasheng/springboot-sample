@@ -15,55 +15,34 @@
  */
 
 package com.sample;
+
 import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 
 @SpringBootApplication
 @MapperScan("com.sample.dao")
 @ImportResource({"spring-dubbo.xml"})
-public class SampleMybatisApplication{
+@EnableWebSocket
+public class SampleMybatisApplication {
+    private static Logger logger = Logger.getLogger(SampleMybatisApplication.class);
 
-		private static Logger logger = Logger.getLogger(SampleMybatisApplication.class);
-//
-//		//DataSource配置
-//		@Bean
-//		@ConfigurationProperties(prefix="spring")
-//		public DataSource dataSource() {
-//			return new org.apache.tomcat.jdbc.pool.DataSource();
-//		}
-//
-//		//提供SqlSeesion
-//		@Bean
-//		public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
-//
-//			SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-//			sqlSessionFactoryBean.setDataSource(dataSource());
-//
-//			PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//
-//			sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
-//
-//			return sqlSessionFactoryBean.getObject();
-//		}
-//
-//		@Bean
-//		public PlatformTransactionManager transactionManager() {
-//			return new DataSourceTransactionManager(dataSource());
-//		}
 
-		/**
-		 * Main Start
-		 */
-		public static void main(String[] args) {
+
+
+    /**
+     * Main Start
+     */
+    public static void main(String[] args) {
 //			SpringApplication application = new SpringApplication(SampleMybatisApplication.class);
 //			application.setShowBanner(false);
 //			application.run(args);
-			SpringApplication.run(SampleMybatisApplication.class, args);
-			logger.info("============= SpringBoot Start Success =============");
-		}
+        SpringApplication.run(SampleMybatisApplication.class, args);
+        logger.info("============= SpringBoot Start Success =============");
+    }
 
-	}
+}

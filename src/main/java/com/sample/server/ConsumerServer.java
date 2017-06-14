@@ -23,8 +23,8 @@ public class ConsumerServer {
     private ConsumerMapper consumerMapper;
 //    @Autowired
 //    private UserServer userServer;
-    @Autowired
-    private RedisCache redisCache;
+//    @Autowired
+//    private RedisCache redisCache;
 
 
 //    @Cacheable(value = "springbootCache" ,keyGenerator = "localKeyGenerator")
@@ -32,13 +32,18 @@ public class ConsumerServer {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("memberName", name);
 
-        Consumer result = (Consumer) redisCache.get("consumer:"+ name).get();
-        if (result == null) {
-            result = consumerMapper.getConsumerRequest(params);
-            redisCache.put("consumer:"+ name,result);
-        }
+//        Consumer result = (Consumer) redisCache.get("consumer:"+ name).get();
+//        if (result == null) {
+//            result = consumerMapper.getConsumerRequest(params);
+//            redisCache.put("consumer:"+ name,result);
+//        }
 
         logger.info("message get from db");
-        return result;
+        return null;
+    }
+
+    public int insertProducts(Map<String,Object> params){
+        return consumerMapper.insertProducts(params);
+
     }
 }

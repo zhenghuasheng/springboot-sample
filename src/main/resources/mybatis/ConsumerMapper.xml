@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.sample.dao.ConsumerMapper">
   
-  	<select id="getConsumerRequest" parameterType="map" resultType="Consumer">
+  	<select id="getConsumerRequest" parameterType="map" resultType="com.sample.model.Consumer">
   		select * from sms.t_consumer
   		<where>
   			<trim prefixOverrides="and">
@@ -13,4 +13,50 @@
   			</trim> 			
   		</where>	
   	</select>
+
+	<insert id="insertProducts" parameterType="map" >
+		INSERT INTO t_product_batch
+
+		<trim suffixOverrides="," prefix="(" suffix=")">
+			<if test="name != null">
+				`name`,
+			</if>
+			<if test="option != null">
+				`option`,
+			</if>
+			<if test="units != null">
+				units,
+			</if>
+			<if test="quantity != null">
+				quantity,
+			</if>
+			<if test="sn !=null">
+				sn,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+		</trim>
+		VALUES
+		<trim suffixOverrides="," prefix="(" suffix=")">
+			<if test="name != null">
+				#{name,jdbcType = VARCHAR},
+			</if>
+			<if test="option != null">
+				#{option,jdbcType =VARCHAR},
+			</if>
+			<if test="units != null">
+				#{units,jdbcType =VARCHAR},
+			</if>
+			<if test="quantity != null">
+				#{quantity},
+			</if>
+			<if test="sn !=null">
+				#{sn,jdbcType =VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price},
+			</if>
+		</trim>
+	</insert>
   </mapper>
