@@ -21,18 +21,28 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
 @MapperScan("com.sample.dao")
 @ImportResource({"spring-dubbo.xml"})
-@EnableWebSocket
+//@EnableWebSocket
+//@EnableAsync
+@EnableScheduling
 public class SampleMybatisApplication {
     private static Logger logger = Logger.getLogger(SampleMybatisApplication.class);
 
 
-
+//    @Bean
+//    public TaskExecutor taskExecutor() {
+//        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+//        executor.setCorePoolSize(5);
+//        executor.setMaxPoolSize(10);
+//        executor.setThreadNamePrefix("MySimpleExecutor-");
+//        executor.setQueueCapacity(25);
+//        return executor;
+//    }
 
     /**
      * Main Start
