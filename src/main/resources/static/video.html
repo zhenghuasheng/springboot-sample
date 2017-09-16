@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video</title>
+</head>
+
+<body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    //获取href所带指定参数的值
+    function getUrlParams(val) {
+        var uri = window.location.search;
+        var re = new RegExp("" + val + "\=([^\&\?]*)", "ig");
+        return ((uri.match(re)) ? (uri.match(re)[0].substr(val.length + 1)) : null);
+    }
+</script>
+ <script>
+     $(function () {
+         var name = getUrlParams("address");
+         if (name) {
+             var resource = "video/"+ name;
+             var r = "<source src='" + resource + "'>";
+             $("#video_play").append(r);
+         }else {
+             $("#video_play").append("<source src='video/AnyoneOfUs.mp4'>");
+         }
+     });
+ </script>
+<!--     <video src="http://www.zhangxinxu.com/study/media/cat.mp4" width="352" height="264" autoplay = "autoplay" controls="controls"/>-->
+<div style="text-align: center">
+    <video width="600" height="550" autoplay = "autoplay" controls="controls" id="video_play"/>
+</div>
+
+
+ </video>
+</body>
+</html>
