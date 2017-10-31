@@ -25,12 +25,16 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 
+/**
+ * @author zhenghuasheng
+ */
 @SpringBootApplication
 @MapperScan("com.sample.dao")
 @ImportResource({"spring-dubbo.xml"})
-//@EnableWebSocket
+@EnableWebSocket
 //@EnableAsync
 @EnableScheduling
 public class SampleMybatisApplication {
