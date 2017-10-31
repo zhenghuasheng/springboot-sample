@@ -20,8 +20,11 @@ import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 
 @SpringBootApplication
@@ -34,15 +37,15 @@ public class SampleMybatisApplication {
     private static Logger logger = Logger.getLogger(SampleMybatisApplication.class);
 
 
-//    @Bean
-//    public TaskExecutor taskExecutor() {
-//        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-//        executor.setCorePoolSize(5);
-//        executor.setMaxPoolSize(10);
-//        executor.setThreadNamePrefix("MySimpleExecutor-");
-//        executor.setQueueCapacity(25);
-//        return executor;
-//    }
+    @Bean
+    public TaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(10);
+        executor.setThreadNamePrefix("MySimpleExecutor-");
+        executor.setQueueCapacity(25);
+        return executor;
+    }
 
     /**
      * Main Start
