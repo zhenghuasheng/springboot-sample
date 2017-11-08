@@ -23,9 +23,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 /**
@@ -35,8 +37,9 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 @MapperScan("com.sample.dao")
 @ImportResource({"spring-dubbo.xml"})
 @EnableWebSocket
-//@EnableAsync
+@EnableAsync
 @EnableScheduling
+@EnableSwagger2
 public class SampleMybatisApplication {
     private static Logger logger = Logger.getLogger(SampleMybatisApplication.class);
 
