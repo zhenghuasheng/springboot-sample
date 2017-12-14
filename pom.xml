@@ -200,6 +200,19 @@
             <version>2.7.0</version>
         </dependency>
 
+        <!--JavaMailSender-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+       <!--  diamond
+        <dependency>
+            <groupId>com.taobao.diamond</groupId>
+            <artifactId>diamond-client</artifactId>
+            <version>3.3-SNAPSHOT</version>
+        </dependency> -->
+
     </dependencies>
 
 

@@ -2,7 +2,10 @@ package com.sample.controller;
 
 import com.sample.server.rabbitmq.RabbitSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
     @Autowired
     private RabbitSender rabbitSender;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
 
     @RequestMapping("/")
     public String index() {
@@ -34,6 +41,27 @@ public class HelloController {
     @RequestMapping("/send")
     public String sendMessage(String content) {
         rabbitSender.sendMessage(content);
+        return "success";
+    }
+
+
+
+
+    @RequestMapping("/sendMail")
+    @ResponseBody
+    public String sendMail(String content) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("52126375@qq.com");
+        message.setTo("1367729767@qq.com");
+        message.setSubject("主题：简单邮件");
+
+        if (StringUtils.isEmpty(content)) {
+            message.setText("测试邮件内容");
+        }else {
+            message.setText(content);
+        }
+
+        mailSender.send(message);
         return "success";
     }
 

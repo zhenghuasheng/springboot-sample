@@ -7,7 +7,7 @@ package com.sample.config.security;
  */
 //@Configuration
 public class Http2HttpsConfig {
-
+//
 //    @Bean
 //    public EmbeddedServletContainerCustomizer servletContainerCustomizer() {
 //        return new EmbeddedServletContainerCustomizer() {
@@ -19,26 +19,32 @@ public class Http2HttpsConfig {
 //            }
 //
 //            private void customizeJetty(JettyEmbeddedServletContainerFactory container) {
-//                container.addServerCustomizers((Server server) -> {
-//                    // HTTP
-//                    ServerConnector connector = new ServerConnector(server);
-//                    connector.setPort(9999);
+//                container.addServerCustomizers(new JettyServerCustomizer() {
+//                    @Override
+//                    public void customize(Server server) {
+//                        // HTTP
+//                        ServerConnector connector = new ServerConnector(server);
+//                        connector.setPort(8090);
 //
-//                    // HTTPS
-//                    SslContextFactory sslContextFactory = new SslContextFactory();
-//                    sslContextFactory.setKeyStorePath(properties.getKeystoreFile());
-//                    sslContextFactory.setKeyStorePassword(properties.getKeystorePassword());
+//                        // HTTPS
+//                        SslContextFactory sslContextFactory = new SslContextFactory();
+//                        sslContextFactory.setKeyStorePath("E:\\other\\springboot-sample\\src\\main\\resources\\slfe_keystore.p12");
+//                        sslContextFactory.setKeyStorePassword("123456");
+//                        sslContextFactory.setKeyStoreType("PKCS12");
 //
-//                    HttpConfiguration config = new HttpConfiguration();
-//                    config.setSecureScheme(HttpScheme.HTTPS.asString());
-//                    config.addCustomizer(new SecureRequestCustomizer());
+//                        HttpConfiguration config = new HttpConfiguration();
+//                        config.setSecureScheme(HttpScheme.HTTPS.asString());
+//                        config.setSecurePort(9999);
+//                        config.addCustomizer(new SecureRequestCustomizer());
 //
-//                    ServerConnector sslConnector = new ServerConnector(
-//                            server,
-//                            new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()),
-//                            new HttpConnectionFactory(config));
-//                    sslConnector.setPort(properties.getPort());
-//                    server.setConnectors(new Connector[]{connector, sslConnector});
+//
+//                        ServerConnector sslConnector = new ServerConnector(server,
+//                                new SslConnectionFactory(sslContextFactory, HttpVersion.HTTP_1_1.asString()),
+//                                new HttpConnectionFactory(config));
+//                        sslConnector.setPort(9999);
+//
+//                        server.setConnectors(new Connector[]{connector, sslConnector});
+//                    }
 //                });
 //            }
 //        };
