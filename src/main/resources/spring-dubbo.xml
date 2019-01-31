@@ -17,10 +17,10 @@
     <!--<dubbo:protocol name="dubbo"  port="30908"/>-->
 
 
-    <dubbo:reference interface="com.order.server.UserServer" id="userServer" check="false"/>
-    <dubbo:reference interface="com.order.server.AuthServer" id="authServer"/>
-    <dubbo:reference interface="com.order.server.UserMoneyServer" id="userMoneyServer"/>
-    <dubbo:reference interface="com.order.server.UserIntegrateServer" id="userIntegrateServer"/>
-    <dubbo:reference interface="com.order.server.TaskServer" id="taskServer"/>
+    <!--<dubbo:reference interface="com.order.server.UserServer" id="userServer" check="false"/>-->
+    <!--<dubbo:reference interface="com.order.server.AuthServer" id="authServer"/>-->
+    <!--<dubbo:reference interface="com.order.server.UserMoneyServer" id="userMoneyServer"/>-->
+    <!--<dubbo:reference interface="com.order.server.UserIntegrateServer" id="userIntegrateServer"/>-->
+    <!--<dubbo:reference interface="com.order.server.TaskServer" id="taskServer"/>-->
 
 </beans>
