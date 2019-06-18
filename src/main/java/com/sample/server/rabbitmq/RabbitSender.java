@@ -31,6 +31,6 @@ public class RabbitSender {
     public void sendMessage(String content) {
         String message = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         logger.info("message:{}",message);
-        amqpTemplate.convertAndSend("exchange", "topic.message",message );
+        amqpTemplate.convertAndSend("exchange", "topic.message",message.concat(content) );
     }
 }

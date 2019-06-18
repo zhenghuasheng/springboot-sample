@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@RabbitListener(queues = {"topic.message"})
+@RabbitListener(queues = {"topic.message","q_m_1"})
 public class RabbitConsumer {
     private static final Logger logger = LoggerFactory.getLogger(RabbitConsumer.class);
 

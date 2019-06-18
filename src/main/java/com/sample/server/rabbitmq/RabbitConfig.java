@@ -18,33 +18,33 @@ public class RabbitConfig {
      */
     @Bean(name="message")
     public Queue queueMessage() {
-        return new Queue("topic.message");
+        return new Queue("q_m_1");
     }
 
-//    /**
-//     * topic交换器
-//     * @return
-//     */
-//    @Bean
-//    public TopicExchange exchange() {
-//        return new TopicExchange("exchange");
-//    }
-//    @Bean
-//    Binding bindingExchangeMessage(@Qualifier("message") Queue queueMessage, TopicExchange exchange) {
-//       return BindingBuilder.bind(queueMessage).to(exchange).with("topic.message");
-//    }
-
     /**
-     * 配置广播交换器
+     * topic交换器
      * @return
      */
     @Bean
-    public FanoutExchange exchange() {
-        return new FanoutExchange("fanoutExchange");
+    public TopicExchange exchange() {
+        return new TopicExchange("exchange");
+    }
+    @Bean
+    Binding bindingExchangeMessage(@Qualifier("message") Queue queueMessage, TopicExchange exchange) {
+       return BindingBuilder.bind(queueMessage).to(exchange).with("topic.message");
     }
 
-    @Bean
-    Binding bindingExchangeMessage(@Qualifier("message") Queue queueMessage, FanoutExchange fanoutExchange) {
-        return BindingBuilder.bind(queueMessage).to(fanoutExchange);
-    }
+//    /**
+//     * 配置广播交换器
+//     * @return
+//     */
+//    @Bean
+//    public FanoutExchange exchange() {
+//        return new FanoutExchange("fanoutExchange");
+//    }
+//
+//    @Bean
+//    Binding bindingExchangeMessage(@Qualifier("message") Queue queueMessage, FanoutExchange fanoutExchange) {
+//        return BindingBuilder.bind(queueMessage).to(fanoutExchange);
+//    }
 }
