@@ -68,24 +68,24 @@ public class HelloController {
     }
 
 
-    public static void main(String[] args) {
-
-        Consumer consumer = new Consumer();
-        consumer.setId(1);
-        consumer.setMemberName("zhs");
-        System.out.println(JSON.toJSONString(consumer));
-
-        String s = "{\n" +
-                "\t\"date\": 1556270290281,\n" +
-                "\t\"id\": 1,\n" +
-                "\t\"memberName\": \"zhs\",\n" +
-                "\t\"sss\": \"123456789\"\n" +
-                "}";
-
-
-        Consumer c = JSON.parseObject(s, Consumer.class);
-        System.out.println(c);
-    }
+//    public static void main(String[] args) {
+//
+//        Consumer consumer = new Consumer();
+//        consumer.setId(1);
+//        consumer.setMemberName("zhs");
+//        System.out.println(JSON.toJSONString(consumer));
+//
+//        String s = "{\n" +
+//                "\t\"date\": 1556270290281,\n" +
+//                "\t\"id\": 1,\n" +
+//                "\t\"memberName\": \"zhs\",\n" +
+//                "\t\"sss\": \"123456789\"\n" +
+//                "}";
+//
+//
+//        Consumer c = JSON.parseObject(s, Consumer.class);
+//        System.out.println(c);
+//    }
 
 }
 
